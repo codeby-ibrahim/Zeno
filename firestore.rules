@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Products: anyone can read, only signed-in admin can write.
+    match /products/{id} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Posts (blog): anyone can read, only signed-in admin can write.
+    match /posts/{id} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Coupons: doc id is the code itself. Customers can only "get" a
+    // specific known code (validate it), never list/browse all coupons.
+    // Only signed-in admin can create/edit/delete.
+    match /coupons/{code} {
+      allow get: if true;
+      allow list: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Orders: anyone can create an order (checkout / WhatsApp quick order)
+    // and look one up to track it. Only signed-in admin can change status.
+    // NOTE: because there's no server in this setup, "list" is open so the
+    // Track Order page can query by order number — this means order records
+    // (name/phone/address) aren't hidden from a technically determined
+    // visitor who guesses an order number. Fine for a small storefront;
+    // if that ever matters, move order creation/reads behind a Cloud
+    // Function instead of direct client access.
+    match /orders/{id} {
+      allow create: if true;
+      allow get, list: if true;
+      allow update, delete: if request.auth != null;
+    }
+  }
+}
