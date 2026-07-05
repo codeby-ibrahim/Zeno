@@ -1,7 +1,7 @@
 import { FaWhatsapp } from 'react-icons/fa'
 
 // Set the real business number (international format, no + or spaces).
-const WHATSAPP_NUMBER = '+923166046564'
+const WHATSAPP_NUMBER = '10000000000'
 
 export function buildWhatsAppLink(product, qty = 1) {
   const link = `${window.location.origin}/product/${product.id}`
