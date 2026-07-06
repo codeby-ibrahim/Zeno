@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -27,17 +30,31 @@ body {
   color: #0B0B0C;
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0B0B0C; }
-::-webkit-scrollbar-thumb { background: #3a3524; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3524;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
 
 :focus-visible {
   outline: 1px solid #D4AF37;
   outline-offset: 3px;
 }
 
-.font-display { font-family: 'Cormorant Garamond', serif; }
+.font-display {
+  font-family: 'Cormorant Garamond', serif;
+}
 
 .text-gold-gradient {
   background: linear-gradient(120deg, #F2D27A 0%, #D4AF37 45%, #FFD65A 60%, #D4AF37 100%);
@@ -46,7 +63,9 @@ body {
   color: transparent;
 }
 
-.tracking-widest2 { letter-spacing: 0.35em; }
+.tracking-widest2 {
+  letter-spacing: 0.35em;
+}
 
 /* grain texture overlay */
 .grain::before {
@@ -61,11 +80,25 @@ body {
 
 /* floating gold particles */
 @keyframes floatUp {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 0.6; }
-  100% { transform: translateY(-110vh) translateX(20px); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-110vh) translateX(20px);
+    opacity: 0;
+  }
 }
+
 .particle {
   position: absolute;
   bottom: -10px;
@@ -76,9 +109,15 @@ body {
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
+
 .shimmer {
   background: linear-gradient(90deg, #D4AF37 0%, #FFD65A 20%, #D4AF37 40%);
   background-size: 200% auto;
@@ -89,32 +128,58 @@ body {
 }
 
 @keyframes bottleFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-16px) rotate(1.2deg); }
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-16px) rotate(1.2deg);
+  }
 }
-.bottle-float { animation: bottleFloat 6s ease-in-out infinite; }
+
+.bottle-float {
+  animation: bottleFloat 6s ease-in-out infinite;
+}
 
 .glass {
-  background: rgba(18,18,18,0.55);
+  background: rgba(18, 18, 18, 0.55);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(212,175,55,0.15);
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .btn-ripple {
   position: relative;
   overflow: hidden;
 }
+
 .btn-ripple:after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,214,90,0.5) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(255, 214, 90, 0.5) 0%, transparent 60%);
   opacity: 0;
   transform: scale(0.4);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
 .btn-ripple:hover:after {
   opacity: 1;
   transform: scale(1.4);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
 }

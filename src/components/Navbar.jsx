@@ -27,10 +27,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'bg-noir/90 backdrop-blur-md border-b border-gold/10 py-3' : 'bg-transparent py-6'
-      }`}
+      className={`w-full z-50 transition-all duration-500 ${scrolled ? 'bg-noir/90 backdrop-blur-md border-b border-gold/10 py-3' : 'bg-transparent py-6'
+        }`}
     >
+
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="font-display text-2xl md:text-3xl tracking-widest2 text-gold-gradient font-medium">
           ZENO
@@ -42,8 +42,7 @@ export default function Navbar() {
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `text-xs uppercase tracking-[0.2em] transition-colors ${
-                  isActive ? 'text-gold' : 'text-ivory/80 hover:text-gold'
+                `text-xs uppercase tracking-[0.2em] transition-colors ${isActive ? 'text-gold' : 'text-ivory/80 hover:text-gold'
                 }`
               }
             >

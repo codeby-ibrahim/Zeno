@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import Navbar from './components/Navbar'
+import PromoBanner from './components/PromoBanner'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import Home from './pages/Home'
@@ -33,7 +34,12 @@ export default function App() {
 
   return (
     <div className="grain min-h-screen flex flex-col">
-      {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && (
+        <div className="fixed top-0 inset-x-0 z-50">
+          <PromoBanner />
+          <Navbar />
+        </div>
+      )}
       <ScrollToTop />
       <main className="flex-1">
         <AnimatePresence mode="wait">
