@@ -48,6 +48,23 @@ function Hero() {
       ref={ref}
       className="relative h-screen min-h-[640px] flex items-center justify-center overflow-hidden bg-gold-fade"
     >
+      {/* Mobile only: video as a soft background so text stays readable and
+          nothing looks cramped on small screens. Desktop layout below is
+          untouched. */}
+      <div className="absolute inset-0 md:hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-poster.jpg"
+          className="w-full h-full object-cover opacity-35"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-noir/60 via-noir/70 to-noir/90" />
+      </div>
+
       <div
         className="absolute inset-0 opacity-40"
         style={{
