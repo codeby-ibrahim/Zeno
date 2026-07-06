@@ -45,7 +45,7 @@ export default function Product() {
   return (
     <PageWrap className="pt-32 pb-24 max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-16 items-start">
-        <div className={`lg:sticky lg:top-32 flex items-center justify-center bg-charcoal border border-gold/10 aspect-square overflow-hidden ${product.image ? '' : 'p-12'}`}>
+        <div className={`lg:sticky lg:top-32 flex items-center justify-center bg-charcoal border border-gold/10 aspect-[4/5] overflow-hidden ${product.image ? '' : 'p-12'}`}>
           {product.image ? (
             <motion.img
               key={product.image}
@@ -54,7 +54,7 @@ export default function Product() {
               transition={{ duration: 0.6, ease: 'easeOut' }}
               src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           ) : (
             <BottleArt liquidColor={product.liquidColor} className="h-full w-auto bottle-float" />
