@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { FiHeart, FiCheck, FiStar } from 'react-icons/fi'
 import PageWrap from '../components/PageWrap'
 import BottleArt from '../components/BottleArt'
@@ -44,9 +45,13 @@ export default function Product() {
   return (
     <PageWrap className="pt-32 pb-24 max-w-7xl mx-auto px-6">
       <div className="grid lg:grid-cols-2 gap-16 items-start">
-        <div className="lg:sticky lg:top-32 flex items-center justify-center bg-charcoal border border-gold/10 aspect-square p-12 overflow-hidden">
+        <div className={`lg:sticky lg:top-32 flex items-center justify-center bg-charcoal border border-gold/10 aspect-square overflow-hidden ${product.image ? '' : 'p-12'}`}>
           {product.image ? (
-            <img
+            <motion.img
+              key={product.image}
+              initial={{ opacity: 0, scale: 1.06 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`}
               alt={product.name}
               className="w-full h-full object-cover"

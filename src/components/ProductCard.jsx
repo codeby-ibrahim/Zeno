@@ -36,12 +36,18 @@ export default function ProductCard({ product, index = 0 }) {
           <FiHeart size={14} className={isWishlisted ? 'fill-gold text-gold' : 'text-ivory'} />
         </button>
 
-        <Link to={`/product/${product.id}`} className="block aspect-[3/4] flex items-center justify-center p-6 overflow-hidden">
+        <Link
+          to={`/product/${product.id}`}
+          className={`block aspect-[3/4] flex items-center justify-center overflow-hidden ${product.image ? '' : 'p-6'}`}
+        >
           {product.image ? (
-            <img
+            <motion.img
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
               src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`}
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <BottleArt

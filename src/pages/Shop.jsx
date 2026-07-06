@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { FiGrid, FiList, FiSearch } from 'react-icons/fi'
+import { FiGrid, FiList, FiSearch, FiSliders, FiX } from 'react-icons/fi'
 import PageWrap from '../components/PageWrap'
 import ProductCard from '../components/ProductCard'
 import { categories } from '../data/products'
@@ -19,6 +19,7 @@ export default function Shop() {
   const [search, setSearch] = useState('')
   const [maxPrice, setMaxPrice] = useState(2000)
   const [view, setView] = useState('grid')
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const { products, usingFallback } = useProducts()
 
   const priceCeiling = useMemo(
@@ -66,8 +67,17 @@ export default function Shop() {
         )}
       </div>
 
+      <div className="flex justify-between items-center mb-6 lg:hidden">
+        <button
+          onClick={() => setFiltersOpen(!filtersOpen)}
+          className="flex items-center gap-2 border border-gold/30 text-gold px-4 py-2 text-xs uppercase tracking-[0.2em]"
+        >
+          {filtersOpen ? <FiX /> : <FiSliders />} Filters
+        </button>
+      </div>
+
       <div className="flex flex-col lg:flex-row gap-10">
-        <aside className="lg:w-64 shrink-0 space-y-10">
+        <aside className={`lg:w-64 shrink-0 space-y-10 ${filtersOpen ? 'block' : 'hidden'} lg:block`}>
           <div className="relative">
             <FiSearch className="absolute left-0 top-1/2 -translate-y-1/2 text-grey" size={14} />
             <input
