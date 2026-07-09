@@ -152,6 +152,58 @@ function Hero() {
   )
 }
 
+function BrandStrip() {
+  // Compact logo-style monogram badges (circle + initial) instead of full
+  // text names — swap the `letter` for a real <img> logo per brand later
+  // if you have actual partner/press logos to use.
+  const marks = [
+    { letter: 'Z', label: 'ZENO', featured: true },
+    { letter: 'L', label: 'Luxe Journal' },
+    { letter: 'F', label: 'The Fragrance Edit' },
+    { letter: 'N', label: 'Noir Magazine' },
+    { letter: 'S', label: 'Scent Review' },
+    { letter: 'H', label: 'House & Style' },
+  ]
+  const repeats = [...marks, ...marks]
+
+  return (
+    <section className="py-6 border-y border-gold/10 bg-charcoal overflow-hidden">
+      <div className="flex whitespace-nowrap animate-marquee w-max">
+        <div className="flex items-center shrink-0">
+          {repeats.map((m, i) => (
+            <div key={`a-${i}`} className="flex items-center gap-2.5 mx-6 sm:mx-8">
+              <span
+                className={`flex items-center justify-center w-8 h-8 rounded-full border font-display text-sm ${m.featured ? 'border-gold text-gold-gradient font-semibold' : 'border-grey/30 text-grey/70'
+                  }`}
+              >
+                {m.letter}
+              </span>
+              <span className={`text-[10px] uppercase tracking-[0.15em] ${m.featured ? 'text-gold' : 'text-grey/60'}`}>
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center shrink-0" aria-hidden="true">
+          {repeats.map((m, i) => (
+            <div key={`b-${i}`} className="flex items-center gap-2.5 mx-6 sm:mx-8">
+              <span
+                className={`flex items-center justify-center w-8 h-8 rounded-full border font-display text-sm ${m.featured ? 'border-gold text-gold-gradient font-semibold' : 'border-grey/30 text-grey/70'
+                  }`}
+              >
+                {m.letter}
+              </span>
+              <span className={`text-[10px] uppercase tracking-[0.15em] ${m.featured ? 'text-gold' : 'text-grey/60'}`}>
+                {m.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function CollectionsStrip() {
   const cats = categories.filter((c) => c !== 'All')
   const blurb = {
@@ -250,6 +302,7 @@ export default function Home() {
     <PageWrap>
       <Hero />
       <CollectionsStrip />
+      <BrandStrip />
       <BestSellers />
       <Manifesto />
     </PageWrap>

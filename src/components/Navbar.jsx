@@ -30,7 +30,6 @@ export default function Navbar() {
       className={`w-full z-50 transition-all duration-500 ${scrolled ? 'bg-noir/90 backdrop-blur-md border-b border-gold/10 py-3' : 'bg-transparent py-6'
         }`}
     >
-
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="font-display text-2xl md:text-3xl tracking-widest2 text-gold-gradient font-medium">
           ZENO
